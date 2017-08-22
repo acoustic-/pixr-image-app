@@ -1,0 +1,7 @@
+<app-album-selector (albumChanged)="onAlbumChanged($event)"></app-album-selector>
+
+<div *ngFor="let p of photos">
+  <app-photo-viewer [photoId]="p['id']"></app-photo-viewer>
+</div>
+
+<app-pagination (paginationChanged)="onPaginationChanged($event)"></app-pagination>

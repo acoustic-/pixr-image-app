@@ -1,0 +1,5 @@
+<div class="container">
+  <ul *ngFor="let album of albums">
+    <li (click)="changeAlbum(album)" [ngClass]="{'active': currentAlbum && album['id'] === currentAlbum['id']}">{{album['title']}}</li>
+  </ul>
+</div>
