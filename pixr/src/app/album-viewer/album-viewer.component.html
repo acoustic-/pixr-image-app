@@ -1,7 +1,20 @@
-<app-album-selector (albumChanged)="onAlbumChanged($event)"></app-album-selector>
-
-<div *ngFor="let p of photos">
-  <app-photo-viewer [photoId]="p['id']"></app-photo-viewer>
+<div class="row">
+  <div class="col-md-3 album-selector">
+    <app-album-selector (albumChanged)="onAlbumChanged($event)"></app-album-selector>
+  </div>
+  <div class="col-md-9 right-panel">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>{{ currentAlbumName }}</h1>
+        <div class="album-content">
+          <app-photo-viewer *ngFor="let p of photos" (photoSelected)="onPhotoSelected($event)" [photoId]="p['id']"></app-photo-viewer>
+        </div>
+      </div>
+      <div class="col-md-12 pagination-container">
+        <app-pagination #pagination (paginationChanged)="onPaginationChanged($event)"></app-pagination>
+      </div>
+  </div>
 </div>
+<app-large-photo-viewer #largePhoto></app-large-photo-viewer>
 
-<app-pagination (paginationChanged)="onPaginationChanged($event)"></app-pagination>
+

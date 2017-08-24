@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    font-family: 'Encode Sans', sans-serif;
+}
+
+app-album-selector .icon {
+    height: 100%;
+}
+
+app-album-selector .icon-container {
+    height: 10vh;
+    min-height: 50px;
+    width: 100%;
+}
+
+app-large-photo-viewer .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    fill: white;
+}

@@ -7,6 +7,7 @@ import { ResourcesService } from './resources.service';
 import { PaginationComponent } from './pagination/pagination.component';
 import { AlbumSelectorComponent } from './album-selector/album-selector.component';
 import { PhotoViewerComponent } from './photo-viewer/photo-viewer.component';
+import { LargePhotoViewerComponent } from './large-photo-viewer/large-photo-viewer.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { PhotoViewerComponent } from './photo-viewer/photo-viewer.component';
     AlbumViewerComponent,
     PaginationComponent,
     AlbumSelectorComponent,
-    PhotoViewerComponent
+    PhotoViewerComponent,
+    LargePhotoViewerComponent
   ],
   imports: [
     BrowserModule,

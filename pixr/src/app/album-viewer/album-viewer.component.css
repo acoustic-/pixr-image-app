@@ -1,0 +1,38 @@
+.album-content {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: center;
+}
+
+.right-panel {
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.right-panel > row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.album-selector {
+    text-align: center;
+    padding-right: 0;
+}
+
+h1 {
+    font-family: 'Merienda One', cursive;
+    font-size: 5em;
+    text-align: center;
+}
+
+.pagination-container {
+    position: absolute;
+    bottom: 20px;
+}
+
+:host > div.row {
+    margin-left: -15px;
+    margin-right: 0px;
+}

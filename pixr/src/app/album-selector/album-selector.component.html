@@ -1,5 +1,13 @@
-<div class="container">
-  <ul *ngFor="let album of albums">
-    <li (click)="changeAlbum(album)" [ngClass]="{'active': currentAlbum && album['id'] === currentAlbum['id']}">{{album['title']}}</li>
-  </ul>
+<div class="wrap">
+  <div class="icon-container">
+    <div data-icon="ei-chevron-up" data-size="l" class="icon top"></div>
+  </div>
+  <div class="selector">
+    <ul *ngFor="let album of albums">
+      <li (click)="changeAlbum(album)" [ngClass]="{'active': currentAlbum && album['id'] === currentAlbum['id']}">{{album['title']}}</li>
+    </ul>
+  </div>
+  <div class="icon-container">
+    <div data-icon="ei-chevron-down" data-size="l" class="icon bottom"></div>
+  </div>
 </div>
