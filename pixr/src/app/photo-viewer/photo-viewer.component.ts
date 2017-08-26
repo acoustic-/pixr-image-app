@@ -11,6 +11,7 @@ export class PhotoViewerComponent implements OnInit {
   @Output() photoSelected: EventEmitter<any> = new EventEmitter();
   private photo: object;
   public thumbnail: string = "";
+  public thumbnailTitle: string = "";
 
   constructor(private resources: ResourcesService) { 
   }
@@ -18,7 +19,8 @@ export class PhotoViewerComponent implements OnInit {
   ngOnInit() {
     this.resources.getPhoto(this.photoId).subscribe(res => {
       this.photo = res;
-      this.thumbnail = this.photo['thumbnailUrl'];
+      this.thumbnailTitle = this.photo['title'];
+      this.thumbnail = this.photo['thumbnailUrl'].replace("http", "https");
     });
   }
 

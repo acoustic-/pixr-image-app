@@ -1,11 +1,11 @@
-<div class="dropshadow" [ngClass] = "{'dont-display': !display}">
+<div class="dropshadow" [ngClass] = "{'dont-display': !display}"  (swipeleft)="swipe(idx, $event.type)" (swiperight)="swipe(idx, $event.type)">
   <div class="row">
     <div class="col-xs-1" (click)="setPreviousPhoto()" [ngClass]="{'disabled': previousPhotoExists() == false }">
       <div data-icon="ei-chevron-left" data-size="l" class="navi-icon icon"  [ngClass]="{'disabled': previousPhotoExists() == false }"></div>
     </div>
     <div class="col-xs-10">
       <div class="image-container">
-        <img class="large-photo" title=" Click to toggle info visibility" (click)="toggleInfo()" src="{{ photoUrl }}"/>
+        <img class="large-photo" title=" Click to toggle info visibility" alt="Photo: {{photoTitle}}" (click)="toggleInfo()" src="{{ photoUrl }}"/>
         <div class="photo-info"   [ngClass] = "{'dont-display': !displayInfo}">
             <div>{{ photoTitle }}</div>
         </div>

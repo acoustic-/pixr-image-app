@@ -1,4 +1,10 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, HostListener  } from '@angular/core';
+
+export enum KEY_CODE {
+  RIGHT_ARROW = 39,
+  LEFT_ARROW = 37,
+  ESCAPE = 27
+}
 
 @Component({
   selector: 'app-large-photo-viewer',
@@ -13,6 +19,7 @@ export class LargePhotoViewerComponent implements OnInit {
   public photoTitle: string = "";
   public display: boolean = false;
   public displayInfo: boolean = true;
+  public SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };
 
   @Output() changePhoto = new EventEmitter();
 
@@ -25,7 +32,7 @@ export class LargePhotoViewerComponent implements OnInit {
     this.photo = photo;
     this.previousPhoto = previous;
     this.nextPhoto = next;
-    this.photoUrl = this.photo['url'];
+    this.photoUrl = this.photo['url'].replace("http", "https");;
     this.photoTitle = this.photo['title'];
     this.display = true;
   }
@@ -56,5 +63,36 @@ export class LargePhotoViewerComponent implements OnInit {
 
   public toggleInfo() {
     this.displayInfo = !this.displayInfo;
+  }
+
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    console.log(event);
+    
+    if (event.keyCode === KEY_CODE.RIGHT_ARROW) {
+      this.setNextPhoto();
+    }
+
+    if (event.keyCode === KEY_CODE.LEFT_ARROW) {
+      this.setPreviousPhoto();
+    }
+
+    if (event.keyCode === KEY_CODE.ESCAPE) {
+      this.close();
+    }
+  }
+
+  swipe(currentIndex: number, action = this.SWIPE_ACTION.RIGHT) {
+
+
+    // swipe right, next avatar
+    if (action === this.SWIPE_ACTION.RIGHT) {
+        this.setNextPhoto();
+    }
+
+    // swipe left, previous avatar
+    if (action === this.SWIPE_ACTION.LEFT) {
+        this.setPreviousPhoto();
+    }
   }
 }
