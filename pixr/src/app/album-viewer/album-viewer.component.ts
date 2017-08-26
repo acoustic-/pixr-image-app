@@ -2,6 +2,8 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ResourcesService } from '../resources.service';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { LargePhotoViewerComponent } from '../large-photo-viewer/large-photo-viewer.component';
+import { UserViewerComponent } from '../user-viewer/user-viewer.component';
+import { UsersService } from '../users.service';
 import * as _ from 'lodash';
 
 @Component({
@@ -14,6 +16,7 @@ export class AlbumViewerComponent implements OnInit {
 
   @ViewChild('pagination') pagination: PaginationComponent;
   @ViewChild('largePhoto') largePhoto: LargePhotoViewerComponent;
+  @ViewChild(UserViewerComponent) userViewer: UserViewerComponent;
 
   public photos: Array<object> = [];
   private allPhotos: Array<object> = [];
@@ -22,7 +25,7 @@ export class AlbumViewerComponent implements OnInit {
   private currentPage: number = 1;
   private limit: number = 8;
 
-  constructor(private resources: ResourcesService) { }
+  constructor(private resources: ResourcesService, private users: UsersService) { }
 
   ngOnInit() {
     // this.resources.getAlbums().subscribe(res => {
@@ -39,6 +42,7 @@ export class AlbumViewerComponent implements OnInit {
   }
 
   public onPhotoSelected(photo: any) {
+    this.userViewer.hide();
     let index = _.findIndex(this.allPhotos, (p) => {return p['id'] === photo['id']})
     let previousIndex = index - 1 >= 0 ? index - 1 : -1;
     let nextIndex = index + 1 > 0 && index + 1 < this.allPhotos.length ? index + 1 : -1;
@@ -51,6 +55,10 @@ export class AlbumViewerComponent implements OnInit {
     if (this.currentPage !== page) {
       this.pagination.setPagination({page: page, limit: this.limit});
     }
+  }
+
+  public onUserSelected(user: any) {
+    this.userViewer.setUser(user);
   }
 
   private updatePhotos() {

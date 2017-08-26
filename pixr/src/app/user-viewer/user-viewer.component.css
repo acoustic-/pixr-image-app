@@ -1,0 +1,75 @@
+
+.sidenav {
+    height: 100%;
+    width: 0; 
+    position: fixed;
+    z-index: 1; 
+    top: 0;
+    right: 0;
+    background-image: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s; 
+    max-width: 80vw;
+}
+
+.icon-close {
+    position: relative;
+    right: -190px;
+    top: -50px;
+    z-index: 15000;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+.user-details {
+    height: 100vh;
+    font-weight: 200;
+    position: relative;
+    top: -120px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.w3-card-4 > div {
+    padding-left: 50px;
+}
+
+.company-name, .street {
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.catchphrase {
+    font-size: 0.8em;
+    font-style: italic;
+}
+
+.username {
+    font-size: 1.1em;
+    font-weight: 800;
+}
+
+.geo {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.w3-panel {
+    margin: 3px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: white;
+}
+
+agm-map {
+    height: 170px;
+    width: 227px;
+}

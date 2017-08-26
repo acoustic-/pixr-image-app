@@ -4,10 +4,14 @@ import { HttpModule }    from '@angular/http';
 import { AppComponent } from './app.component';
 import { AlbumViewerComponent } from './album-viewer/album-viewer.component';
 import { ResourcesService } from './resources.service';
+import { UsersService } from './users.service';
 import { PaginationComponent } from './pagination/pagination.component';
 import { AlbumSelectorComponent } from './album-selector/album-selector.component';
 import { PhotoViewerComponent } from './photo-viewer/photo-viewer.component';
 import { LargePhotoViewerComponent } from './large-photo-viewer/large-photo-viewer.component';
+import { CountoModule }  from 'angular2-counto';
+import { UserViewerComponent } from './user-viewer/user-viewer.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -16,13 +20,18 @@ import { LargePhotoViewerComponent } from './large-photo-viewer/large-photo-view
     PaginationComponent,
     AlbumSelectorComponent,
     PhotoViewerComponent,
-    LargePhotoViewerComponent
+    LargePhotoViewerComponent,
+    UserViewerComponent
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    CountoModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAFRnoqhcBVn8BCHmN8EZNHvh4GOUGd-YA'
+    })
   ],
-  providers: [ResourcesService],
+  providers: [ResourcesService, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

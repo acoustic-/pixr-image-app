@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ResourcesService } from '../resources.service';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-album-selector',
@@ -9,11 +10,12 @@ import { ResourcesService } from '../resources.service';
 export class AlbumSelectorComponent implements OnInit {
 
   @Output() albumChanged = new EventEmitter();
+  @Output() userSelected = new EventEmitter();
 
   public albums: Array<object> = [];
   private currentAlbum: object;
 
-  constructor(private resources: ResourcesService) { }
+  constructor(private resources: ResourcesService, private users: UsersService) { }
 
   ngOnInit() {
     this.resources.getAlbums().subscribe(res => {
@@ -39,4 +41,7 @@ export class AlbumSelectorComponent implements OnInit {
     this.albumChanged.emit(this.currentAlbum);
   }
 
+  public userClicked(userId) {
+    this.userSelected.emit(userId);
+  }
 }

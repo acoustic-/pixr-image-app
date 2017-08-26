@@ -4,10 +4,10 @@
       <div data-icon="ei-chevron-left" data-size="l" class="navi-icon icon"  [ngClass]="{'disabled': previousPhotoExists() == false }"></div>
     </div>
     <div class="col-xs-10">
-      <div class="image-container">
+      <div class="image-container" *ngIf="photo !== null">
         <img class="large-photo" title=" Click to toggle info visibility" alt="Photo: {{photoTitle}}" (click)="toggleInfo()" src="{{ photoUrl }}"/>
-        <div class="photo-info"   [ngClass] = "{'dont-display': !displayInfo}">
-            <div>{{ photoTitle }}</div>
+        <div class="photo-info" [ngClass] = "{'dont-display': !displayInfo}">
+           <div><a (click)="userClicked(users.getUserIdByAlbum(photo['albumId']))">{{ users.getUserNameByAlbum(photo['albumId']) }}</a> {{ photoTitle }}</div>
         </div>
       </div>
     </div>

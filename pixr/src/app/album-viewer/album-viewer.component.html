@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-3 album-selector">
-    <app-album-selector (albumChanged)="onAlbumChanged($event)"></app-album-selector>
+    <app-album-selector (albumChanged)="onAlbumChanged($event)" (userSelected)="onUserSelected($event)"></app-album-selector>
   </div>
   <div class="col-md-9 right-panel">
     <div class="row">
@@ -15,6 +15,7 @@
       </div>
   </div>
 </div>
-<app-large-photo-viewer (changePhoto)="onPhotoSelected($event)" #largePhoto></app-large-photo-viewer>
+<app-large-photo-viewer (changePhoto)="onPhotoSelected($event)" (userSelected)="onUserSelected($event)" #largePhoto></app-large-photo-viewer>
+<app-user-viewer></app-user-viewer>
 
 

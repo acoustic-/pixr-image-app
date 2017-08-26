@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 * {
     font-family: 'Encode Sans', sans-serif;
+    color: black;
 }
 
 app-album-selector .icon {
@@ -17,12 +18,27 @@ app-large-photo-viewer .navi-icon {
     fill: white;
 }
 
-.icon {
+app-large-photo-viewer .icon {
     transition: all .2s ease-in-out; 
 }
 
-.icon:not(.disabled):hover {
+app-large-photo-viewer .icon:not(.disabled):hover {
     transform: scale(1.1);
+}
+
+app-user-viewer .icon.icon--ei-close.icon {
+    float: inherit;
+}
+
+app-user-viewer .icon {
+    float: left;
+    position: relative;
+    left: -10px;
+}
+
+app-user-viewer .icon--ei-sc-linkedin {
+    color: inherit;
+    fill: inherit;
 }
 
 img.photo {

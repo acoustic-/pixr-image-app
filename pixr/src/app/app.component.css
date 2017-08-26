@@ -49,7 +49,7 @@ body {
   }
   
 .neon:hover {
-    color: #FF1177;
+    color: #EF5397;
     -webkit-animation: none;
     -moz-animation: none;
     animation: none;
@@ -90,3 +90,16 @@ body {
       text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
     }
   }
+
+.upper-info-bar {
+  font-size: 0.8em;
+  font-weight: 400;
+  text-align: center;
+  position: absolute;
+  width: 100vw;
+}
+
+.upper-info-bar > .statistic {
+  color: #FF1177;
+  font-weight: 600;
+}

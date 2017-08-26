@@ -50,14 +50,30 @@ img {
     background-color: rgba(0, 0, 0, 0.2);    
     position: relative;
     height: 100px;
-    top: -100px;
+    top: -95px;
     transition: all .2s ease-in-out;
 }
 
 .photo-info > div {
     color: white;
     margin: 0 auto;
+    font-size: 1.3em;
+}
+
+.photo-info > div > a {
+    color: white;
     font-weight: 800;
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+}
+
+.photo-info > div > a:hover {
+    color: #EF5397;
+    text-decoration: none;
+}
+
+.photo-info > div > a:visited {
+    color: #FDB0D1;
 }
 
 .image-container {

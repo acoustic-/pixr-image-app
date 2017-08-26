@@ -28,4 +28,8 @@ export class ResourcesService {
   public getPhoto(photoId: string): Observable<any> {
     return this.http.get(this.baseUrl + "/photos/" + photoId).map((res: any) => res.json());
   }
+
+  public getPhotos(): Observable<any> {
+    return this.http.get(this.baseUrl + '/photos').map((res:any) => res.json());
+  }
 }

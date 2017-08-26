@@ -6,6 +6,12 @@
         </div>
     </div><!-- /.container-fluid -->
 </nav>
+<div class="upper-info-bar">
+    {{ greeting }} Pixr-palvelussa on tällä hetkellä
+    <span class="statistic">{{statistics.photos}}</span> kuvaa,
+    <span class="statistic">{{statistics.albums}}</span> albumia,
+    <span class="statistic">{{statistics.users}}</span> käyttäjää.
+</div>
 <div class="container-fluid" id="main-container">
     <app-album-viewer></app-album-viewer>
 </div>

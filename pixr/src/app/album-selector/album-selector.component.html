@@ -4,7 +4,8 @@
   </div>
   <div class="selector">
     <ul>
-      <li *ngFor="let album of albums" (click)="changeAlbum(album)" [ngClass]="{'active': currentAlbum && album['id'] === currentAlbum['id']}">{{album['title']}}</li>
+      <li *ngFor="let album of albums" (click)="changeAlbum(album)" [ngClass]="{'active': currentAlbum && album['id'] === currentAlbum['id']}">
+      <a (click)="userClicked(album['userId'])">{{ users.getUserName(album['userId']) }}</a> / {{album['title']}}</li>
     </ul>
   </div>
   <div class="icon-container">

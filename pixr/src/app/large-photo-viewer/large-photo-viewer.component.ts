@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, HostListener  } from '@angular/core';
+import { UsersService } from '../users.service';
 
 export enum KEY_CODE {
   RIGHT_ARROW = 39,
@@ -12,7 +13,7 @@ export enum KEY_CODE {
   styleUrls: ['./large-photo-viewer.component.css']
 })
 export class LargePhotoViewerComponent implements OnInit {
-  private photo: object;
+  private photo: object = null;
   private previousPhoto: object;
   private nextPhoto: object;
   public photoUrl: string = "";
@@ -22,8 +23,9 @@ export class LargePhotoViewerComponent implements OnInit {
   public SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };
 
   @Output() changePhoto = new EventEmitter();
+  @Output() userSelected = new EventEmitter();
 
-  constructor() { }
+  constructor(private users: UsersService) { }
   
   ngOnInit() {
   }
@@ -92,5 +94,11 @@ export class LargePhotoViewerComponent implements OnInit {
     if (action === this.SWIPE_ACTION.LEFT) {
         this.setPreviousPhoto();
     }
+  }
+
+  public userClicked(userId) {
+    console.log("user lciked", userId)
+    this.close();
+    this.userSelected.emit(userId);
   }
 }

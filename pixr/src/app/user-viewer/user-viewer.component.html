@@ -1,0 +1,34 @@
+<div id="mySidenav" class="sidenav" [ngStyle]="{'width.px': width}">
+    <span class="icon-close" (click)="toggle()"><div data-icon="ei-close" data-size="m" class="icon"></div></span>
+    <div class="user-details">
+      <div class="w3-panel w3-card-4 user">
+          <div data-icon="ei-user" data-size="m" class="icon"></div>
+            <div class="username">{{ user ? user['username']: "" }}</div>
+            <div class="name">{{ user ? user['name']: "" }}</div>
+            <div class="email">{{ user ? user['email']: "" }}</div>
+            <div class="phone">{{ user ? user['phone']: "" }}</div>
+            <div class="website">{{ user ? user['website']: "" }}</div>
+      </div>
+      <div class="w3-panel w3-card-4 company">
+        <div data-icon="ei-sc-linkedin" data-size="m" class="icon"></div>
+          <div><span class="company-name">{{ company ? company['name'] : "" }}</span><br/>
+            <span class="catchphrase">"{{ company ? company['catchPhrase']: "" }}"</span><br/>
+            <span class="bs">{{ company ? company['bs']: "" }}</span><br/>
+          </div>
+      </div>
+
+      <div class="w3-panel w3-card-4 address">
+        <div data-icon="ei-location" data-size="m" class="icon"></div>
+        <div><span class="street">{{ address ? address['street']: "" }}</span><br/>
+          {{ address ? address['suite']: "" }}<br/>
+          {{ address ? address['city']: "" }}<br/>
+          {{ address ? address['zipcode']: "" }}
+        </div>
+      </div>
+      <div class="w3-panel w3-card-4 geo" *ngIf="lat != 0 && lng != 0">
+        <agm-map [latitude]="lat" [longitude]="lng">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+          </agm-map>
+      </div>
+    </div>
+</div>
