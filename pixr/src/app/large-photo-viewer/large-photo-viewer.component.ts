@@ -82,9 +82,7 @@ export class LargePhotoViewerComponent implements OnInit {
     }
   }
 
-  swipe(currentIndex: number, action = this.SWIPE_ACTION.RIGHT) {
-
-
+  swipe(action = this.SWIPE_ACTION.RIGHT) {
     // swipe right, next avatar
     if (action === this.SWIPE_ACTION.RIGHT) {
         this.setNextPhoto();

@@ -1,4 +1,4 @@
-<div class="dropshadow" [ngClass] = "{'dont-display': !display}"  (swipeleft)="swipe(idx, $event.type)" (swiperight)="swipe(idx, $event.type)">
+<div class="dropshadow" [ngClass] = "{'dont-display': !display}"  (swipeleft)="swipe($event.type)" (swiperight)="swipe($event.type)">
   <div class="row">
     <div class="col-xs-1" (click)="setPreviousPhoto()" [ngClass]="{'disabled': previousPhotoExists() == false }">
       <div data-icon="ei-chevron-left" data-size="l" class="navi-icon icon"  [ngClass]="{'disabled': previousPhotoExists() == false }"></div>
