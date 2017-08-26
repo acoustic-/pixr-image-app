@@ -13,11 +13,10 @@ export enum KEY_CODE {
   styleUrls: ['./large-photo-viewer.component.css']
 })
 export class LargePhotoViewerComponent implements OnInit {
-  private photo: object = null;
+  public photo: object = null;
   private previousPhoto: object;
   private nextPhoto: object;
   public photoUrl: string = "";
-  public photoTitle: string = "";
   public display: boolean = false;
   public displayInfo: boolean = true;
   public SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };
@@ -35,7 +34,6 @@ export class LargePhotoViewerComponent implements OnInit {
     this.previousPhoto = previous;
     this.nextPhoto = next;
     this.photoUrl = this.photo['url'].replace("http", "https");;
-    this.photoTitle = this.photo['title'];
     this.display = true;
   }
 

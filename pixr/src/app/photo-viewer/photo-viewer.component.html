@@ -1,4 +1,4 @@
-<div class="photo-container">
-    <img class="photo" (click)="showLargerPhoto()" alt="Thumbnail: {{ thumbnailTitle }}" src="{{ thumbnail }}"/>
+<div class="photo-container"  *ngIf="photo !== null">
+    <img class="photo" (click)="showLargerPhoto()" alt="Thumbnail: photo['title']" src="{{ thumbnail }}"/>
 </div>
 
