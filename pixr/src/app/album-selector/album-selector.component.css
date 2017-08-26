@@ -10,7 +10,7 @@
 }
 
 .selector {
-    height: 80vh;
+    height: calc(80vh - 100px);
     overflow-y: scroll;
 }
 
@@ -32,13 +32,17 @@ ul {
 li {
     padding: 5px;
     width: 100%;
-    background-color: #eee;
     overflow: hidden;
     text-align: left;
 
+    font-size: 1.2em;
+    font-weight: 200;
+    color: #fff;
+
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    border-radius: 2px;
+    border: 2px solid #fff;
+    border-radius: 7px;
 
 }
 

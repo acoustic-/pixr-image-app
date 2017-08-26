@@ -13,9 +13,26 @@ app-album-selector .icon-container {
     width: 100%;
 }
 
-app-large-photo-viewer .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+app-large-photo-viewer .navi-icon {
     fill: white;
+}
+
+.icon {
+    transition: all .2s ease-in-out; 
+}
+
+.icon:not(.disabled):hover {
+    transform: scale(1.1);
+}
+
+img.photo {
+    transition: all .2s ease-in-out;
+}
+
+img.photo:hover {
+    transform: scale(1.1);
+}
+
+.disabled > div {
+    fill: rgba(0, 0, 0, 0);
 }

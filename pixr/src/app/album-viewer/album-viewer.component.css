@@ -7,7 +7,7 @@
 }
 
 .right-panel {
-    height: 100vh;
+    height: calc(100vh - 100px);
     overflow-y: auto;
 }
 
@@ -22,7 +22,7 @@
 }
 
 h1 {
-    font-family: 'Merienda One', cursive;
+    font-weight: 800;
     font-size: 5em;
     text-align: center;
 }

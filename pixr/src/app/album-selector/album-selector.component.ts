@@ -16,7 +16,7 @@ export class AlbumSelectorComponent implements OnInit {
   constructor(private resources: ResourcesService) { }
 
   ngOnInit() {
-    this.resources.getAlbums().subscribe(res => 
+    this.resources.getAlbums().subscribe(res => {
       this.albums = res.sort((a,b) => {
         if (a['title'] < b['title']) {
           return -1;
@@ -26,10 +26,12 @@ export class AlbumSelectorComponent implements OnInit {
           return 0;
         }
       })
-    );
-    if (this.albums && this.albums.length) {
-      this.currentAlbum = this.albums[0];
-    }
+      
+      if (this.albums && this.albums.length) {
+        this.currentAlbum = this.albums[0];
+        this.changeAlbum(this.currentAlbum);
+      }
+    });
   }
 
   private changeAlbum(album: object) {

@@ -1,4 +1,11 @@
-<div class="dropshadow" *ngIf="display">
-  <img class="large-photo" src="{{ photoUrl }}"/>
-  <div data-icon="ei-close" (click)="close()" data-size="l" class="icon close"></div>
+<div class="dropshadow" [ngClass] = "{'dont-display': !display}">
+  <div class="row">
+    <div class="col-xs-1" (click)="setPreviousPhoto()" [ngClass]="{'disabled': previousPhotoExists() == false }">
+      <div data-icon="ei-chevron-left" data-size="l" class="navi-icon icon"  [ngClass]="{'disabled': previousPhotoExists() == false }"></div>
+    </div>
+    <div class="col-xs-10"><img class="large-photo" src="{{ photoUrl }}"/></div>
+    <div class="col-xs-1"  (click)="setNextPhoto()"  [ngClass]="{'disabled': nextPhotoExists() == false }">
+      <div data-icon="ei-chevron-right" data-size="l" class="navi-icon icon"></div>
+    </div>
+    <span class="icon-close" (click)="close()"><div data-icon="ei-close" data-size="l" class="icon"></div></span>
 </div>

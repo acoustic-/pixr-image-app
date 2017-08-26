@@ -15,6 +15,6 @@
       </div>
   </div>
 </div>
-<app-large-photo-viewer #largePhoto></app-large-photo-viewer>
+<app-large-photo-viewer (changePhoto)="onPhotoSelected($event)" #largePhoto></app-large-photo-viewer>
 
 

@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ResourcesService } from '../resources.service';
 import { PaginationComponent } from '../pagination/pagination.component';
 import { LargePhotoViewerComponent } from '../large-photo-viewer/large-photo-viewer.component';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-album-viewer',
@@ -15,6 +16,7 @@ export class AlbumViewerComponent implements OnInit {
   @ViewChild('largePhoto') largePhoto: LargePhotoViewerComponent;
 
   private photos: Array<object> = [];
+  private allPhotos: Array<object> = [];
   private currentAlbum: string = "";
   private currentAlbumName: string = "";
   private currentPage: number = 1;
@@ -23,11 +25,11 @@ export class AlbumViewerComponent implements OnInit {
   constructor(private resources: ResourcesService) { }
 
   ngOnInit() {
-    this.resources.getAlbums().subscribe(res => {
-      if (res && res.length) {
-        this.onAlbumChanged(res[0])
-      }
-    })
+    // this.resources.getAlbums().subscribe(res => {
+    //   if (res && res.length) {
+    //     this.onAlbumChanged(res[0]);
+    //   }
+    // })
   }
 
   private onPaginationChanged(pagination: object) {
@@ -37,8 +39,20 @@ export class AlbumViewerComponent implements OnInit {
   }
 
   private onPhotoSelected(photo: any) {
-    console.log("onPhotoSelected", photo)
-    this.largePhoto.setPhoto(photo);
+    console.log("onPhotoSelected", photo);
+    console.log("allPhotos", this.allPhotos)
+    let index = _.findIndex(this.allPhotos, (p) => {return p['id'] === photo['id']})
+    let previousIndex = index - 1 >= 0 ? index - 1 : -1;
+    let nextIndex = index + 1 > 0 && index + 1 < this.allPhotos.length ? index + 1 : -1;
+    this.largePhoto.setPhoto(
+      photo, 
+      previousIndex > -1 ? this.allPhotos[previousIndex] : null,
+      nextIndex > -1 ? this.allPhotos[nextIndex] : null);
+    // Update pagination
+    let page = Math.ceil((index+1)/this.limit);
+    if (this.currentPage !== page) {
+      this.pagination.setPagination({page: page, limit: this.limit});
+    }
   }
 
   private updatePhotos() {
@@ -59,6 +73,7 @@ export class AlbumViewerComponent implements OnInit {
     this.updatePhotos();
 
     this.resources.getPhotosInAlbum(this.currentAlbum).subscribe(res => {
+      this.allPhotos = res;
       this.pagination.setTotalCount(res.length);
     })
   }
