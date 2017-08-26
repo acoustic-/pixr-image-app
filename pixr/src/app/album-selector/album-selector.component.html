@@ -3,8 +3,8 @@
     <div data-icon="ei-chevron-up" data-size="l" class="icon top"></div>
   </div>
   <div class="selector">
-    <ul *ngFor="let album of albums">
-      <li (click)="changeAlbum(album)" [ngClass]="{'active': currentAlbum && album['id'] === currentAlbum['id']}">{{album['title']}}</li>
+    <ul>
+      <li *ngFor="let album of albums" (click)="changeAlbum(album)" [ngClass]="{'active': currentAlbum && album['id'] === currentAlbum['id']}">{{album['title']}}</li>
     </ul>
   </div>
   <div class="icon-container">

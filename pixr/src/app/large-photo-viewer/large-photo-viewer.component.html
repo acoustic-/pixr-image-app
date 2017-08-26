@@ -3,9 +3,17 @@
     <div class="col-xs-1" (click)="setPreviousPhoto()" [ngClass]="{'disabled': previousPhotoExists() == false }">
       <div data-icon="ei-chevron-left" data-size="l" class="navi-icon icon"  [ngClass]="{'disabled': previousPhotoExists() == false }"></div>
     </div>
-    <div class="col-xs-10"><img class="large-photo" src="{{ photoUrl }}"/></div>
+    <div class="col-xs-10">
+      <div class="image-container">
+        <img class="large-photo" title=" Click to toggle info visibility" (click)="toggleInfo()" src="{{ photoUrl }}"/>
+        <div class="photo-info"   [ngClass] = "{'dont-display': !displayInfo}">
+            <div>{{ photoTitle }}</div>
+        </div>
+      </div>
+    </div>
     <div class="col-xs-1"  (click)="setNextPhoto()"  [ngClass]="{'disabled': nextPhotoExists() == false }">
       <div data-icon="ei-chevron-right" data-size="l" class="navi-icon icon"></div>
     </div>
-    <span class="icon-close" (click)="close()"><div data-icon="ei-close" data-size="l" class="icon"></div></span>
+  </div>
+  <span class="icon-close" (click)="close()"><div data-icon="ei-close" data-size="l" class="icon"></div></span>
 </div>

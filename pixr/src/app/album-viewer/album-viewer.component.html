@@ -10,7 +10,7 @@
           <app-photo-viewer *ngFor="let p of photos" (photoSelected)="onPhotoSelected($event)" [photoId]="p['id']"></app-photo-viewer>
         </div>
       </div>
-      <div class="col-md-12 pagination-container">
+      <div class="col-xs-12 pagination-container">
         <app-pagination #pagination (paginationChanged)="onPaginationChanged($event)"></app-pagination>
       </div>
   </div>
