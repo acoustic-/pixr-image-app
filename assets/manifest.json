@@ -1,7 +1,7 @@
 {
     "name": "Pixr",
     "short_name": "Pixr",
-    "start_url": ".",
+    "start_url": "/",
     "display": "standalone",
     "background_color": "#f17",
     "description": "A simple app for jsonplaceholder photo api.",
