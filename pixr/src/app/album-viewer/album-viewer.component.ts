@@ -19,8 +19,8 @@ export class AlbumViewerComponent implements OnInit {
   private allPhotos: Array<object> = [];
   private currentAlbum: string = "";
   public currentAlbumName: string = "";
-  private currentPage: number = this.pagination.getCurrentPage();
-  private limit: number = this.pagination.getLimit();
+  private currentPage: number = 1;
+  private limit: number = 8;
 
   constructor(private resources: ResourcesService) { }
 

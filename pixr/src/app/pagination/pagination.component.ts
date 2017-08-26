@@ -23,28 +23,18 @@ export class PaginationComponent implements OnInit {
   }
 
   setTotalCount(total: number) {
-    this.pages = new Array(Math.ceil(total /this.limit));
+    this.pages = new Array(Math.ceil(total / this.limit));
     this.currentPage = 1;
   }
 
   change(clicked: number) {
-    console.log("clicked", clicked)
     this.currentPage = clicked;
-    this.paginationChanged.emit({'page': this.currentPage, 'limit': this.limit});
+    this.paginationChanged.emit({ 'page': this.currentPage, 'limit': this.limit });
   }
 
-  public setPagination(pagination: {page: number, limit: number}) {
-    console.log("update with ", pagination)
+  public setPagination(pagination: { page: number, limit: number }) {
     this.limit = pagination.limit;
     this.currentPage = pagination.page;
     this.change(this.currentPage);
-  }
-
-  public getCurrentPage(): number {
-    return this.currentPage;
-  }
-
-  public getLimit(): number {
-    return this.limit;
   }
 }
