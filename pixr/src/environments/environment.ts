@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  api: 'http://jsonplaceholder.typicode.com'
+  api: 'https://jsonplaceholder.typicode.com'
 };
