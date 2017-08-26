@@ -1,5 +1,6 @@
 
 .sidenav {
+    min-height: 550px;
     height: 100%;
     width: 0; 
     position: fixed;
@@ -7,6 +8,7 @@
     top: 0;
     right: 0;
     background-image: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
+    overflow-y: auto;
     overflow-x: hidden;
     padding-top: 60px;
     transition: 0.5s; 
@@ -26,11 +28,8 @@
 }
 
 .user-details {
-    height: 100vh;
+    overflow: hidden;
     font-weight: 200;
-    position: relative;
-    top: -120px;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
