@@ -15,12 +15,12 @@ export class AlbumViewerComponent implements OnInit {
   @ViewChild('pagination') pagination: PaginationComponent;
   @ViewChild('largePhoto') largePhoto: LargePhotoViewerComponent;
 
-  private photos: Array<object> = [];
+  public photos: Array<object> = [];
   private allPhotos: Array<object> = [];
   private currentAlbum: string = "";
-  private currentAlbumName: string = "";
-  private currentPage: number = 1;
-  private limit: number = 8;
+  public currentAlbumName: string = "";
+  private currentPage: number = this.pagination.getCurrentPage();
+  private limit: number = this.pagination.getLimit();
 
   constructor(private resources: ResourcesService) { }
 
@@ -32,15 +32,13 @@ export class AlbumViewerComponent implements OnInit {
     // })
   }
 
-  private onPaginationChanged(pagination: object) {
+  public onPaginationChanged(pagination: object) {
     this.currentPage = pagination['page'];
     this.limit = pagination['limit'];
     this.updatePhotos();    
   }
 
-  private onPhotoSelected(photo: any) {
-    console.log("onPhotoSelected", photo);
-    console.log("allPhotos", this.allPhotos)
+  public onPhotoSelected(photo: any) {
     let index = _.findIndex(this.allPhotos, (p) => {return p['id'] === photo['id']})
     let previousIndex = index - 1 >= 0 ? index - 1 : -1;
     let nextIndex = index + 1 > 0 && index + 1 < this.allPhotos.length ? index + 1 : -1;
@@ -56,18 +54,15 @@ export class AlbumViewerComponent implements OnInit {
   }
 
   private updatePhotos() {
-    console.log("update photos called")
     this.resources.getSubsetOfPhotosInAlbum(
       this.currentAlbum, 
       this.currentPage, 
       this.limit).subscribe(res => {
       this.photos = res;
-      console.log("loaded update photos", res)
     })
   }
 
-  private onAlbumChanged(album: object) {
-    console.log("album changed", album)
+  public onAlbumChanged(album: object) {
     this.currentAlbum = album['id'];
     this.currentAlbumName = album['title'];
     this.updatePhotos();

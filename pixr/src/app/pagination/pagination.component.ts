@@ -11,7 +11,7 @@ export class PaginationComponent implements OnInit {
 
   private limit: number = 8;
   private currentPage: number = 1;
-  private pages: Array<any> = [];
+  public pages: Array<any> = [];
 
   @Output() paginationChanged = new EventEmitter();
 
@@ -38,5 +38,13 @@ export class PaginationComponent implements OnInit {
     this.limit = pagination.limit;
     this.currentPage = pagination.page;
     this.change(this.currentPage);
+  }
+
+  public getCurrentPage(): number {
+    return this.currentPage;
+  }
+
+  public getLimit(): number {
+    return this.limit;
   }
 }

@@ -10,7 +10,7 @@ export class PhotoViewerComponent implements OnInit {
   @Input() photoId: string;
   @Output() photoSelected: EventEmitter<any> = new EventEmitter();
   private photo: object;
-  private thumbnail: string = "";
+  public thumbnail: string = "";
 
   constructor(private resources: ResourcesService) { 
   }
@@ -25,7 +25,7 @@ export class PhotoViewerComponent implements OnInit {
     });
   }
 
-  private showLargerPhoto() {
+  public showLargerPhoto() {
     console.log("clikec photo", this.photo)
     this.photoSelected.emit(this.photo);
   }

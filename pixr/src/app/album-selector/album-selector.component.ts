@@ -10,7 +10,7 @@ export class AlbumSelectorComponent implements OnInit {
 
   @Output() albumChanged = new EventEmitter();
 
-  private albums: Array<object> = [];
+  public albums: Array<object> = [];
   private currentAlbum: object;
 
   constructor(private resources: ResourcesService) { }

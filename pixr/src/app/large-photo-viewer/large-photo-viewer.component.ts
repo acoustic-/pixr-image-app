@@ -9,10 +9,10 @@ export class LargePhotoViewerComponent implements OnInit {
   private photo: object;
   private previousPhoto: object;
   private nextPhoto: object;
-  private photoUrl: string = "";
-  private photoTitle: string = "";
-  private display: boolean = false;
-  private displayInfo: boolean = true;
+  public photoUrl: string = "";
+  public photoTitle: string = "";
+  public display: boolean = false;
+  public displayInfo: boolean = true;
 
   @Output() changePhoto = new EventEmitter();
 
@@ -30,11 +30,11 @@ export class LargePhotoViewerComponent implements OnInit {
     this.display = true;
   }
 
-  private close() {
+  public close() {
     this.display = false;
   }
 
-  private setNextPhoto() {
+  public setNextPhoto() {
     if (this.nextPhoto !== null) {
       this.changePhoto.emit(this.nextPhoto);
     }
@@ -50,11 +50,11 @@ export class LargePhotoViewerComponent implements OnInit {
     return this.previousPhoto !== null;
   }
 
-  private nextPhotoExists(): boolean {
+  public nextPhotoExists(): boolean {
     return this.nextPhoto !== null;
   }
 
-  private toggleInfo() {
+  public toggleInfo() {
     this.displayInfo = !this.displayInfo;
   }
 }
